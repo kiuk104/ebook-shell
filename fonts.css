@@ -1,0 +1,12 @@
+/* 이북 읽기모드 폰트 — 코믹스앱 본문 폰트(woff2)
+   ebook-shell 레포 루트에 fonts.css, fonts/ 폴더에 woff2 3개를 둔다.
+   읽기 페이지가 https://kiuk104.github.io/ebook-shell/fonts.css 를 링크로 불러옴. */
+@font-face{font-family:'RIDIBatang';
+  src:url('fonts/ridibatang.woff2') format('woff2');
+  font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'SCDreamLight';
+  src:url('fonts/scdream-light.woff2') format('woff2');
+  font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'SCDreamBold';
+  src:url('fonts/scdream-bold.woff2') format('woff2');
+  font-weight:400;font-style:normal;font-display:swap}
