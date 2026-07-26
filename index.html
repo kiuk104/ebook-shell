@@ -131,9 +131,10 @@ function renderBooks(d, fromCache) {
     let sub = "";
     if (it.count) {
       if (it.pos != null) {
+        const pn = Math.floor(it.pos);  // pos는 소수(문단+비율)일 수 있음
         const pct = Math.min(100,
-          Math.round((it.pos + 1) / it.count * 100));
-        sub = "🔖 #" + (it.pos + 1) + "까지 검수 / " + it.count
+          Math.round((pn + 1) / it.count * 100));
+        sub = "🔖 #" + (pn + 1) + "까지 검수 / " + it.count
             + "문단 (" + pct + "%)";
       } else sub = it.count + "문단 · 북마크 없음";
     }
