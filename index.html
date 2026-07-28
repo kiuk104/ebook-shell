@@ -81,7 +81,10 @@ body{font-family:'Malgun Gothic',sans-serif;background:var(--bg);
 </div>
 
 <div class="pg" id="view">
- <iframe id="fr" src="about:blank" allow="clipboard-write"></iframe>
+ <!-- screen-wake-lock·autoplay는 기본 허용 범위가 'self'라 크로스오리진
+      iframe(GAS 검수 페이지)에 명시적으로 넘겨줘야 '화면 꺼짐 방지'가 산다 -->
+ <iframe id="fr" src="about:blank"
+   allow="clipboard-write; screen-wake-lock; autoplay"></iframe>
  <button id="back" title="탭: 현재 기능 · 길게: 서재 ↔ 원문 보기 전환">⌂</button>
  <div id="fabtip"></div>
 </div>
