@@ -416,10 +416,16 @@ function toast(m, ms) {
   t.textContent = m; t.classList.add("on");
   clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove("on"), ms || 2600);
 }
-async function gas(body) {
+async function gas(body, _retry) {
   const r = await fetch(cfg.url, {method: "POST",
     body: JSON.stringify(Object.assign({key: cfg.key}, body))});
-  const d = await r.json();
+  const t = await r.text();
+  let d;
+  try { d = JSON.parse(t); }
+  catch (e) {     // GAS가 간헐적으로 오류 페이지(HTML)를 돌려줌 — 한 번 더
+    if (!_retry) { await new Promise(ok => setTimeout(ok, 1200)); return gas(body, 1); }
+    throw new Error("동기화 서버 응답 오류 — 잠시 뒤 다시 시도하세요");
+  }
   if (d.err) throw new Error(d.err);
   return d;
 }
